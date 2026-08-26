@@ -77,7 +77,7 @@ export default function Page() {
             <span className="max-w-44 text-xs font-bold uppercase leading-tight tracking-[0.16em] text-primary sm:max-w-none sm:text-sm">Shri Neem Karori<br className="sm:hidden" /> Baba Gau Sewa</span>
           </a>
           <nav className="hidden items-center gap-6 lg:flex" aria-label="Main navigation">
-            {['About Us', 'Donate & Shop', 'Cow Adoption', 'Updates', 'Gallery', 'Contact'].map((item) => <a key={item} href={`#${item.toLowerCase().replaceAll(' ', '-')}`} className="text-sm font-medium text-muted-foreground transition hover:text-primary">{item}</a>)}
+            {['About Us', 'Donate & Shop', 'Cow Adoption', 'Updates', 'Gallery', 'Contact'].map((item) => <a key={item} href={item === 'About Us' ? '/about' : `#${item.toLowerCase().replaceAll(' ', '-')}`} className="text-sm font-medium text-muted-foreground transition hover:text-primary">{item}</a>)}
           </nav>
           <div className="flex items-center gap-2">
             <button onClick={() => setCartOpen(true)} className="relative grid size-10 place-items-center rounded-full border border-border text-primary transition hover:bg-secondary" aria-label={`Open sewa cart with ${cartCount} items`}><ShoppingBag size={18} />{cartCount > 0 && <span className="absolute -right-1 -top-1 grid size-5 place-items-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">{cartCount}</span>}</button>
@@ -85,7 +85,7 @@ export default function Page() {
             <button className="grid size-10 place-items-center rounded-full border border-border lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu" aria-expanded={menuOpen}>{menuOpen ? <X size={19} /> : <Menu size={19} />}</button>
           </div>
         </div>
-        {menuOpen && <nav className="flex flex-col gap-4 border-t border-border/60 px-5 py-5 lg:hidden" aria-label="Mobile navigation">{['About Us', 'Donate & Shop', 'Cow Adoption', 'Updates', 'Gallery', 'Contact'].map((item) => <a key={item} onClick={() => setMenuOpen(false)} href={`#${item.toLowerCase().replaceAll(' ', '-')}`} className="text-sm font-semibold">{item}</a>)}</nav>}
+        {menuOpen && <nav className="flex flex-col gap-4 border-t border-border/60 px-5 py-5 lg:hidden" aria-label="Mobile navigation">{['About Us', 'Donate & Shop', 'Cow Adoption', 'Updates', 'Gallery', 'Contact'].map((item) => <a key={item} onClick={() => setMenuOpen(false)} href={item === 'About Us' ? '/about' : `#${item.toLowerCase().replaceAll(' ', '-')}`} className="text-sm font-semibold">{item}</a>)}</nav>}
       </header>
 
       <section id="home" className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-14 lg:grid-cols-[1.03fr_.97fr] lg:px-8 lg:pb-28 lg:pt-24">
